@@ -1,0 +1,18 @@
+.link {
+  color: rgb(212, 0, 0);
+  font-size: 18px;
+}
+.loginBtn {
+  border: none;
+  background-color: #f65551;
+  padding: 10px 40px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.loginBtn:hover {
+  background-color: #d60b08;
+}
