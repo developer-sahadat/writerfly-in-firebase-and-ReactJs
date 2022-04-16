@@ -1,16 +1,12 @@
 import React from "react";
 import useService from "../../../Hook/useService";
 import Service from "../../Shear/Service/Service";
-import Banner from "../Banner/Banner";
-import "./Home.css";
 
-const Home = () => {
+const Services = () => {
   const [services] = useService();
 
   return (
     <div>
-      <Banner />
-
       <div className="container">
         <h1 className="services-title">
           Our <span>Content Write</span> Services<span>.</span>
@@ -25,4 +21,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Services;

@@ -4,6 +4,7 @@ import Home from "./Component/Home/Home/Home";
 import About from "./Component/Pages/About/About";
 import Blogs from "./Component/Pages/Blogs/Blogs";
 import Login from "./Component/Pages/Login/Login";
+import Services from "./Component/Pages/Services/Services";
 import SignUp from "./Component/Pages/SignUp/SignUp";
 import Header from "./Component/Shear/Header/Header";
 
@@ -15,7 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blogs" element={<Blogs />} />
-        <Route path="/services" element={<Home />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
       </Routes>
