@@ -15,11 +15,11 @@ import { async } from "@firebase/util";
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
-  /*------- email and password Sign Up star here -------*/
+  /*------- email and password Sign Up start here -------*/
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-  /*------- Update Profile star here -------*/
+  /*------- Update Profile start here -------*/
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
   if (loading || updating) {
@@ -30,7 +30,7 @@ const SignUp = () => {
     userError = error?.message ? error.message : updateError?.message;
   }
 
-  /*------- submit handler star here -------*/
+  /*------- submit handler start here -------*/
   const submitHandler = async (e) => {
     e.preventDefault();
 

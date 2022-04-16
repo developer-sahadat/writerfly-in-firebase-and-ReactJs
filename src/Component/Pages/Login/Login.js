@@ -7,15 +7,25 @@ import googleIcon from "../../../Assets/Icons/google.png";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import auth from "../../../Firebase/init";
+import Spinners from "../../Shear/Spinners/Spinners";
 
 const Login = () => {
+  /*-------user sign in start here -------*/
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  /*------- submit handler star here -------*/
+
+  if (loading) {
+    return <Spinners />;
+  }
+
+  console.log(user);
+
+  /*------- submit handler start here -------*/
   const submitHandler = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    signInWithEmailAndPassword(email, password);
   };
 
   return (
@@ -57,6 +67,7 @@ const Login = () => {
                   type="email"
                   placeholder="Enter email"
                   required
+                  name="email"
                   className="emailInput"
                 />
               </Form.Group>
@@ -69,6 +80,7 @@ const Login = () => {
                   type="password"
                   placeholder="Password"
                   required
+                  name="password"
                   className="passwordInput"
                 />
               </Form.Group>
