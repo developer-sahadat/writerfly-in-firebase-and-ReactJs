@@ -1,17 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .link {
-  color: rgb(212, 0, 0);
-  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  margin: 10px 20px;
+  font-size: 17px;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.5s;
 }
+
+.link:hover {
+  color: #d60b08;
+}
+
+.link.active {
+  color: #eb3633;
+}
+
 .loginBtn {
   border: none;
   background-color: #f65551;
   padding: 10px 40px;
   color: white;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.5s;
+  font-family: "Poppins", sans-serif;
 }
 .loginBtn:hover {
   background-color: #d60b08;
