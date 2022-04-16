@@ -1,0 +1,90 @@
+.login {
+  padding: 20px 50px;
+  border-left: 1px solid rgb(255, 200, 213);
+}
+.login h2 {
+  font-weight: 600;
+  color: rgb(0, 0, 0, 0.7);
+}
+
+.social-media-login {
+  margin-top: 20px;
+  text-align: center;
+}
+.social-media-login button {
+  width: 90%;
+  border: 2px solid rgb(247, 234, 234);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 15px 0;
+  text-align: center;
+  border-radius: 60px;
+  background-color: transparent;
+}
+.social-media-login span {
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.signByEmail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signByEmail div {
+  height: 2px;
+  width: 30%;
+  background-color: rgb(253, 226, 226);
+}
+.signByEmail p {
+  margin-top: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(245, 142, 142);
+}
+
+.emailInput,
+.passwordInput {
+  border-radius: 50px;
+  padding: 10px 20px;
+}
+.start {
+  color: rgb(255, 189, 189);
+}
+.forgetPassword {
+  text-align: end;
+  margin: 0;
+  line-height: 0;
+  padding-bottom: 30px;
+  color: rgb(245, 142, 142);
+  cursor: pointer;
+}
+
+.submitBtn {
+  width: 95%;
+  padding: 15px 0;
+  border-radius: 60px;
+  background-color: #f65551;
+  border: none;
+  font-size: 18px;
+  transition: all 0.5s;
+  display: block;
+  margin: 10px auto;
+}
+
+.createNewAccount {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.createNewAccount span {
+  color: black;
+  padding-right: 10px;
+  font-weight: 500;
+}
+.createNewAccount button {
+  border: none;
+  background-color: white;
+  color: #f86d79;
+  font-size: 17px;
+}
