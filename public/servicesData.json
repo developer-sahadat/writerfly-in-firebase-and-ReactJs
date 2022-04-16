@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Write articles for your website",
+    "image": "https://img.freepik.com/free-vector/blog-authors-writing-articles_179970-1523.jpg?w=740",
+    "description": "I enjoy writing, I do it with dedication and I'm sure you are happy with the end result",
+    "id": 1,
+    "price": 250
+  },
+  {
+    "title": "Write an SEO blog",
+    "image": "https://img.freepik.com/free-vector/search-engine-marketing-business-copywriting-service-content-management_335657-3148.jpg?size=626&ext=jpg&uid=R48110847&ga=GA1.2.130129022.1637698838",
+    "description": "blog post 1,000-word SEO-optimized blog post. 3 keywords and free image included",
+    "id": 2,
+    "price": 150
+  },
+  {
+    "title": "write your exquisite love letter",
+    "image": "https://img.freepik.com/free-photo/celebration-card-writing-concept_53876-120175.jpg?size=626&ext=jpg&uid=R48110847&ga=GA1.2.130129022.1637698838",
+    "description": "With this package you receive approximately 350 words, and revisions until pleased.",
+    "id": 3,
+    "price": 500
+  }
+]
