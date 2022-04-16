@@ -1,13 +1,23 @@
 import React from "react";
 import "./Login.css";
 import loginImage from "../../../Assets/Images/login.jpg";
-
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import facebookIcon from "../../../Assets/Icons/facebook.png";
 import googleIcon from "../../../Assets/Icons/google.png";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import auth from "../../../Firebase/init";
 
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  /*------- submit handler star here -------*/
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+  };
+
   return (
     <div className="bg-light pt-3">
       <div className="container bg-white">
@@ -26,7 +36,7 @@ const Login = () => {
               </button>
               <button>
                 <img style={{ width: "30px" }} src={facebookIcon} alt="" />
-                <span>Sign in With Google</span>
+                <span>Sign in With Facebook</span>
               </button>
             </div>
             {/* Social Media sign in ends here */}
@@ -37,7 +47,7 @@ const Login = () => {
             </div>
 
             {/* email and password sign in start here */}
-            <Form>
+            <Form onSubmit={submitHandler}>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="fw-bold">
                   Email
