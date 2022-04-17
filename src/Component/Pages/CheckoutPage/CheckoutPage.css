@@ -1,0 +1,39 @@
+.orderDetails {
+  width: 40%;
+  margin: 20px auto;
+  box-shadow: 0 4px 21px -12px rgba(255, 141, 141, 0.76);
+  padding: 25px;
+}
+.orderDetails p {
+  margin: 0;
+  font-weight: 600;
+}
+.orderDetails input {
+  margin-bottom: 25px;
+  width: 100%;
+  padding: 12px;
+}
+.orderDetailsBtn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background: #ff2925;
+  color: white;
+  font-size: 18px;
+  border-radius: 50px;
+  transition: all 0.6s;
+}
+.orderDetailsBtn:hover {
+  background-color: #cc1c19;
+}
+
+@media only screen and (max-width: 992px) {
+  .orderDetails {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .orderDetails {
+    width: 100%;
+  }
+}
