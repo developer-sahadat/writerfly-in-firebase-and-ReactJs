@@ -149,7 +149,6 @@ const SignUp = () => {
                     className="passwordInput"
                   />
                 </Form.Group>
-                <h6 className="forgetPassword">Forget Password?</h6>
                 <p className="text-center text-danger">
                   {errorMessage} {userError}
                 </p>

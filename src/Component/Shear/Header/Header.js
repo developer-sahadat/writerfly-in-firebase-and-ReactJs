@@ -22,7 +22,7 @@ const Header = () => {
     <div>
       <Navbar sticky="top" className="shadow-sm" bg="white" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <img style={{ width: "200px" }} src={logo} alt="" />{" "}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
