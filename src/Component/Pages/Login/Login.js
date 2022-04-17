@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Login.css";
 import loginImage from "../../../Assets/Images/login.jpg";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import facebookIcon from "../../../Assets/Icons/facebook.png";
 import googleIcon from "../../../Assets/Icons/google.png";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../Firebase/init";
 import Spinners from "../../Shear/Spinners/Spinners";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const emailRef = useRef("");
+  let location = useLocation();
+  let navigate = useNavigate();
   /*-------user sign in start here -------*/
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  if (loading) {
+  /*-------password Reset start here -------*/
+  const [sendPasswordResetEmail, passwordResetSending] =
+    useSendPasswordResetEmail(auth);
+
+  if (loading || passwordResetSending) {
     return <Spinners />;
   }
 
-  console.log(user);
+  let from = location.state?.from?.pathname || "/";
+  if (user) {
+    navigate(from, { replace: true });
+  }
 
   /*------- submit handler start here -------*/
   const submitHandler = async (e) => {
@@ -69,6 +85,7 @@ const Login = () => {
                   required
                   name="email"
                   className="emailInput"
+                  ref={emailRef}
                 />
               </Form.Group>
 
@@ -84,10 +101,23 @@ const Login = () => {
                   className="passwordInput"
                 />
               </Form.Group>
-              <h6 className="forgetPassword">Forget Password?</h6>
+              <h6
+                className="forgetPassword"
+                onClick={async () => {
+                  if (emailRef.current.value) {
+                    await sendPasswordResetEmail(emailRef.current.value);
+                    toast("Please check your email!");
+                  } else {
+                    toast("Please enter your email!");
+                  }
+                }}
+              >
+                Forget Password?
+              </h6>
               <Button className="submitBtn" type="submit">
                 Login
               </Button>
+              <ToastContainer />
             </Form>
             {/* email and password sign in ends here */}
             <div className="createNewAccount">

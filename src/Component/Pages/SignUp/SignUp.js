@@ -3,19 +3,19 @@ import signUpImage from "../../../Assets/Images/signup.jpg";
 import facebookIcon from "../../../Assets/Icons/facebook.png";
 import googleIcon from "../../../Assets/Icons/google.png";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import auth from "../../../Firebase/init";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Spinners from "../../Shear/Spinners/Spinners";
-import { async } from "@firebase/util";
 
 const SignUp = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   /*------- email and password Sign Up start here -------*/
+  const Navigate = useNavigate();
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
@@ -42,6 +42,7 @@ const SignUp = () => {
     if (password === confirmPassword) {
       await createUserWithEmailAndPassword(email, password);
       await updateProfile({ displayName: name });
+      Navigate("/");
     } else {
       setErrorMessage("Sorry, your password did not match");
     }
