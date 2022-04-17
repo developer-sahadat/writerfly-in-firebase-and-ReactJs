@@ -4,6 +4,8 @@ import loginImage from "../../../Assets/Images/login.jpg";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
+  useSignInWithFacebook,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import facebookIcon from "../../../Assets/Icons/facebook.png";
 import googleIcon from "../../../Assets/Icons/google.png";
@@ -19,21 +21,39 @@ const Login = () => {
   const emailRef = useRef("");
   let location = useLocation();
   let navigate = useNavigate();
-  /*-------user sign in start here -------*/
+  /*-------user email sign in start here -------*/
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  /*-------Google sign in start here -------*/
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  /*-------Google sign in start here -------*/
+  const [signInWithFacebook, facebookUser, facebookLoading, facebookError] =
+    useSignInWithFacebook(auth);
 
   /*-------password Reset start here -------*/
   const [sendPasswordResetEmail, passwordResetSending] =
     useSendPasswordResetEmail(auth);
 
-  if (loading || passwordResetSending) {
+  if (loading || passwordResetSending || googleLoading || facebookLoading) {
     return <Spinners />;
   }
 
   let from = location.state?.from?.pathname || "/";
-  if (user) {
+  if (user || googleUser || facebookUser) {
     navigate(from, { replace: true });
+  }
+
+  let errorMessage;
+
+  if (error || googleError || facebookError) {
+    errorMessage = error?.message
+      ? error?.message
+      : googleError?.message
+      ? googleError?.message
+      : facebookError.message;
   }
 
   /*------- submit handler start here -------*/
@@ -53,14 +73,13 @@ const Login = () => {
           </div>
           <div className="login">
             <h2>Login</h2>
-
             {/* Social Media sign in start here */}
             <div className="social-media-login">
-              <button>
+              <button onClick={() => signInWithGoogle()}>
                 <img style={{ width: "30px" }} src={googleIcon} alt="" />
                 <span>Sign in With Google</span>
               </button>
-              <button>
+              <button onClick={() => signInWithFacebook()}>
                 <img style={{ width: "30px" }} src={facebookIcon} alt="" />
                 <span>Sign in With Facebook</span>
               </button>
@@ -114,6 +133,7 @@ const Login = () => {
               >
                 Forget Password?
               </h6>
+              <p className="text-center text-danger">{errorMessage}</p>
               <Button className="submitBtn" type="submit">
                 Login
               </Button>
