@@ -29,7 +29,7 @@ const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  /*-------Google sign in start here -------*/
+  /*-------Facebook sign in start here -------*/
   const [signInWithFacebook, facebookUser, facebookLoading, facebookError] =
     useSignInWithFacebook(auth);
 

@@ -7,6 +7,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import auth from "../../../Firebase/init";
 import {
   useCreateUserWithEmailAndPassword,
+  useSignInWithFacebook,
+  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Spinners from "../../Shear/Spinners/Spinners";
@@ -19,15 +21,32 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+  /*-------Google sign up start here -------*/
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  /*-------Facebook sign up start here -------*/
+  const [signInWithFacebook, facebookUser, facebookLoading, facebookError] =
+    useSignInWithFacebook(auth);
+
   /*------- Update Profile start here -------*/
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-  if (loading || updating) {
+  if (loading || updating || googleLoading || facebookLoading) {
     return <Spinners />;
   }
   let userError;
-  if (error || updateError) {
-    userError = error?.message ? error.message : updateError?.message;
+  if (error || updateError || googleError || facebookError) {
+    userError = error?.message
+      ? error.message
+      : updateError?.message
+      ? updateError.message
+      : googleError.message
+      ? googleError.message
+      : facebookError.message;
+  }
+  if (facebookUser || googleUser) {
+    Navigate("/");
   }
 
   /*------- submit handler start here -------*/
@@ -61,11 +80,11 @@ const SignUp = () => {
 
               {/* Social Media sign in start here */}
               <div className="social-media-login">
-                <button>
+                <button onClick={() => signInWithGoogle()}>
                   <img style={{ width: "30px" }} src={googleIcon} alt="" />
                   <span>Sign up With Google</span>
                 </button>
-                <button>
+                <button onClick={() => signInWithFacebook()}>
                   <img style={{ width: "30px" }} src={facebookIcon} alt="" />
                   <span>Sign up With Facebook</span>
                 </button>
