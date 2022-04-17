@@ -2,6 +2,7 @@ import React from "react";
 import useService from "../../../Hook/useService";
 import Service from "../../Shear/Service/Service";
 import Banner from "../Banner/Banner";
+import Contact from "../Contact/Contact";
 import "./Home.css";
 
 const Home = () => {
@@ -21,6 +22,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      <Contact />
     </div>
   );
 };
